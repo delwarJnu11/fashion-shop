@@ -1,24 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/HomePage/Home/Home";
+import Login from "./pages/LoginPage/Login/Login";
+import SignUp from "./pages/LoginPage/SignUP/SignUp";
+import AuthProvider from "./contexts/AuthProvider/AuthProvider";
+import Purchase from "./pages/Purchase/Purchase";
+import Layout from "./pages/Dashboard/Layout/Layout";
+import DashboardOutlet from "./pages/Dashboard/DashboardOutlet/DashboardOutlet";
+import MyOrders from "./pages/Dashboard/MyOrders/MyOrders";
+import Payment from "./pages/Dashboard/Payment/Payment";
+import AddReview from "./pages/Dashboard/AddReview/AddReview";
+import AddProduct from "./pages/Dashboard/AddProduct/AddProduct";
+import MakeAdmin from "./pages/Dashboard/MakeAdmin/MakeAdmin";
+import ManageOrders from "./pages/Dashboard/ManageOrders/ManageOrders";
+import ManageProducts from "./pages/Dashboard/ManageProducts/ManageProducts";
+import AddBlog from "./pages/Dashboard/AddBlog/AddBlog";
+import AdminRoute from "./pages/LoginPage/AdminRoute/AdminRoute";
+import PrivateRoute from "./pages/LoginPage/PrivateRoute/PrivateRoute";
+import Shop from "./pages/Shop/Shop";
+import Blogs from "./pages/HomePage/Blogs/Blogs";
+import Navigation from "./pages/Shared/Navigation/Navigation";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Navigation></Navigation>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}> </Route>
+          <Route path="/purchase/:id" element={<Purchase />}></Route>
+          <Route path="/shop" element={<Shop />}></Route>
+          <Route path="/blogs" element={<Blogs />}></Route>
+          <Route path="/dashboard" element={<PrivateRoute><Layout /></PrivateRoute>}>
+            <Route path="/dashboard" element={<DashboardOutlet></DashboardOutlet>}>
+
+            </Route>
+            <Route path={`/dashboard/myOrders`} element={<MyOrders />}>
+
+            </Route>
+            <Route path={`/dashboard/payment`} element={<Payment></Payment>}>
+
+            </Route>
+            <Route path={`/dashboard/review`} element={<AddReview />}>
+
+            </Route>
+            <Route path={`/dashboard/addProduct`} element={<AdminRoute><AddProduct /></AdminRoute>}></Route>
+            <Route path={`/dashboard/addBlog`} element={<AdminRoute><AddBlog /></AdminRoute>}></Route>
+            <Route path={`/dashboard/makeAdmin`} element={<AdminRoute><MakeAdmin /></AdminRoute>}>
+
+            </Route>
+            <Route path={`/dashboard/manageOrders`} element={<AdminRoute><ManageOrders></ManageOrders></AdminRoute>}>
+
+            </Route>
+            <Route path={`/dashboard/manageProducts`} element={<AdminRoute><ManageProducts></ManageProducts></AdminRoute>}>
+
+            </Route>
+
+          </Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

@@ -1,0 +1,19 @@
+.review-image{
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+.review-image img{
+    border-radius: 50%;
+}
+.review-text{
+    text-align: justify;
+    font-size: 17px;
+    font-family:  Roboto;
+    color: rgb(53, 52, 52);
+}
+.name{
+    color:  #363535;
+    font-family: Roboto;
+    font-size: 1.2em;
+}

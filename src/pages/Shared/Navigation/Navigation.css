@@ -1,0 +1,24 @@
+.nav-item, .name {
+    text-decoration: none;
+    color: black;
+    margin: 0px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.5s;
+}
+.name{
+    color: blueviolet;
+}
+.nav-item:hover{
+    color: chocolate;
+    border-bottom: 1px solid  chocolate;
+}
+
+.login{
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+.login:hover{
+    border: 1px solid  chocolate;
+}

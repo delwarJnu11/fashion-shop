@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Men Glasses",
+        "image": "https://i.ibb.co/Cn8gbV4/product-58-2-grey2.jpg",
+        "description": "It would help if you considered frames that have shapes that uplift your face and enhance your features. For example, round glasses will suit a squarish faced shape, and a rectangular frame will suit an oval face. The best way is to know your face shape and then choose the one that is slightly in contrast.",
+        "price": 50,
+        "stock": 10,
+        "rating": 5
+    },
+    {
+        "name": "Women Shoes",
+        "image": "https://i.ibb.co/9v7kqTk/shoes-3-grey.jpg",
+        "description": "A dress shoe is a shoe to be worn at smart casual or more formal events. A dress shoe is typically contrasted to an athletic shoe. Dress shoes are worn by many as their standard daily shoes, and are widely used in dance, for parties, and for special occasions.",
+        "price": 60,
+        "stock": 30,
+        "rating": 4.5
+    },
+    {
+        "name": "Women Fashion Jacket",
+        "image": "https://i.ibb.co/dQ78sv1/product-16-grey.jpg",
+        "description": "The most fashionable 2021 jackets are a tailored shacket, utility jacket, smart shacket with a belt, quilted jacket, college bomber jacket, leather jacket with wide shoulders, oversized denim jackets, oversized tweed jacket, and printed fleece.",
+        "price": 70,
+        "stock": 40,
+        "rating": 5
+    },
+    {
+        "name": "Women Brown Bag",
+        "image": "https://i.ibb.co/VHGVmkd/shop11-product13.jpg",
+        "description": "Free shipping on handbags, purses, wallets for women at Nordstrom.com. Shop all styles from belt bags, crossbody, tote and backpacks from top brands.",
+        "price": 40,
+        "stock": 20,
+        "rating": 5
+    },
+    {
+        "name": "Women Black Blouse",
+        "image": "https://i.ibb.co/2FzrKW3/product-18-grey-2.jpg",
+        "description": "From tank tops and peasant blouses to flannels and tunic tops, Kohl's has everything you need for a balanced wardrobe. Find women's shirts for every occasion.",
+        "price": 55,
+        "stock": 50,
+        "rating": 5
+    },
+    {
+        "name": "Women High Hill",
+        "image": "https://i.ibb.co/RSbfnDz/shoes-11-grey-2.jpg",
+        "description": "A high hill is a shoe to be worn at smart casual or more formal events. A dress shoe is typically contrasted to an athletic shoe. Dress shoes are worn by many as their standard daily shoes, and are widely used in dance, for parties, and for special occasions.",
+        "price": 49,
+        "stock": 30,
+        "rating": 5
+    },
+    {
+        "name": "Men Shoes",
+        "image": "https://i.ibb.co/PMNM7H9/shop11-02n.jpg",
+        "description": "Free shipping and returns on all men's shoes at Nordstrom.com. Find boots, dress shoes, loafers, sneakers, and more. Shop from top shoe brands for men.",
+        "price": 59,
+        "stock": 40,
+        "rating": 5
+    }
+]

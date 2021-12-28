@@ -1,0 +1,22 @@
+.login-button{
+    background-color: #db8216;
+    border: none;
+}
+.login-button:hover{
+    background-color: #b46b11;
+}
+.login-button:focus, .reset-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+.input-field{
+    border: none;
+    border-bottom: 1px solid rgb(190, 190, 190);
+}
+.input-field:focus{
+    border-bottom: 1px solid grey;
+    box-shadow: none;
+}
+.icon{
+    background-color: transparent;
+}

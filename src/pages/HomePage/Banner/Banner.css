@@ -1,0 +1,68 @@
+.banner1{
+    background-image: url(https://i.ibb.co/zXBGbq4/shop11-home-slider1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 11vh);
+    position: relative;
+}
+.banner2{
+    background-image: url(https://i.ibb.co/6n24qDD/shop11-home-slider2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 11vh);
+    position: relative;
+}
+.text {
+    text-align: left;
+    color: #292929;
+}
+.offer-text {
+    text-align: left;
+    color: #292929;
+    position: relative;
+}
+.btn-div{
+    text-align: left;
+}
+ .banner-text{
+    position: absolute;
+    top:30%;
+    left: 20%;
+}
+  
+.upto{
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transform: translateY(-50%) rotate( -90deg );
+    position: absolute;
+    top: 50%;
+    left: -24px;
+}
+.offer{
+    margin-left: 0.5em;
+    font-family: "roboto";
+    font-weight: 700;
+    font-size: 2em;
+}
+.sliderButton{
+    border: 1px solid rgb(63, 63, 63);
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: transparent;
+    font-size: 18px;
+    font-family: roboto;
+    color: rgb(27, 27, 27);
+    transition: all 0.5s;
+}
+.sliderButton:hover{
+    background-color: #ffffff;
+    color: black;
+    border: none;
+}
+.carousel-indicators{
+    display: none;
+}

@@ -16,7 +16,7 @@ const Product = ({ product }) => {
                     <h6>${product.price}</h6>
                 </div>
                 <div>
-                    <Link className='quickview' to={`purchase/${product._id}`}>
+                    <Link className='quickview' to={`/${product._id}`}>
                         <p className='quickview-text'> <FaEye /> QUICK VIEW</p>
                     </Link>
 

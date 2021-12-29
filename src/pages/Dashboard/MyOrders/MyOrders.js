@@ -1,7 +1,7 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Row, Table } from 'react-bootstrap';
+import { Button, Col, Container, Row, Spinner, Table } from 'react-bootstrap';
 import swal from 'sweetalert';
 import useAuth from '../../../hooks/useAuth';
 
@@ -52,39 +52,43 @@ const MyOders = () => {
 
     return (
         <Container>
-            <Row>
-                <Col xs={12} sm={12} md={12}>
-                    <Table striped bordered hover responsive="sm">
-                        <thead>
-                            <tr className='text-center'>
-                                <th>Product Name</th>
-                                <th>Customer Name</th>
-                                <th>Customer Phone</th>
-                                <th>Price</th>
-                                <th>status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                orders.map(order => <tr className='text-center' key={order._id}>
-                                    <td>{order.product.name}</td>
-                                    <td>{order.name}</td>
-                                    <td>{order.phone}</td>
-                                    <td>${order.product.price}</td>
-                                    <td>{order.status}</td>
-                                    <td>
-                                        <Button title="Delete" variant="danger" onClick={() => handleDelete(order._id)}>
-                                            <FontAwesomeIcon icon={faTrashAlt} />
-                                        </Button>
-                                    </td>
+            {
+                orders.length > 0 ? <Row>
+                    <Col xs={12} sm={12} md={12}>
+                        <Table striped bordered hover responsive="sm">
+                            <thead>
+                                <tr className='text-center'>
+                                    <th>Product Name</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Phone</th>
+                                    <th>Price</th>
+                                    <th>status</th>
+                                    <th>Action</th>
                                 </tr>
-                                )
-                            }
-                        </tbody>
-                    </Table>
-                </Col>
-            </Row>
+                            </thead>
+                            <tbody>
+                                {
+                                    orders.map(order => <tr className='text-center' key={order._id}>
+                                        <td>{order.product.name}</td>
+                                        <td>{order.name}</td>
+                                        <td>{order.phone}</td>
+                                        <td>${order.product.price}</td>
+                                        <td>{order.status}</td>
+                                        <td>
+                                            <Button title="Delete" variant="danger" onClick={() => handleDelete(order._id)}>
+                                                <FontAwesomeIcon icon={faTrashAlt} />
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                    )
+                                }
+                            </tbody>
+                        </Table>
+                    </Col>
+                </Row> : <div className="text-center">
+                    <Spinner animation='border' variant='warning'></Spinner>
+                </div>
+            }
         </Container>
     );
 };

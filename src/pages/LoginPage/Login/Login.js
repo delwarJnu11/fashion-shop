@@ -95,9 +95,9 @@ const Login = () => {
                         <NavLink
                             style={{ textDecoration: 'none' }}
                             to="/signup">
-                            <h6 className="my-3 text-center"> New User? Please Register</h6>
+                            <h6 className="my-3"> New User? Please Register</h6>
                         </NavLink>
-                        <div className="text-center">
+                        <div>
                             <Button onClick={handleGoogleSignIn} className="login-button"> <FcGoogle /> Continue With Google</Button>
                         </div>
                     </Col>

@@ -12,12 +12,12 @@ const Banner = () => {
                             <Col md={6}> </Col>
                             <Col md={6} className="text-left">
 
-                                <h3 className='text'>New Season Dresses</h3>
+                                <h3 className='banner-subtitle'>New Season Dresses</h3>
                                 <h2 className='offer-text'>
                                     <span className="upto">UPTO</span>
                                     <span className="offer">50% OFF</span>
                                 </h2>
-                                <h4 className='text'>STARING AT $ 99.99</h4>
+                                <h4 className='banner-subtitle'>STARING AT $ 99.99</h4>
                                 <div className='btn-div'>
                                     <button className="sliderButton">Shop Now</button>
                                 </div>
@@ -29,12 +29,12 @@ const Banner = () => {
                     <Carousel.Caption className="banner-text">
                         <Row>
                             <Col md={6} className="d-flex justify-content-end flex-column">
-                                <h3 className='text'>New Season Dresses</h3>
+                                <h3 className='banner-subtitle'>New Season Dresses</h3>
                                 <h2 className='offer-text'>
                                     <span className="upto">UPTO</span>
                                     <span className="offer">20% OFF</span>
                                 </h2>
-                                <h4 className='text'>STARING AT $ 79.99</h4>
+                                <h4 className='banner-subtitle'>STARING AT $ 79.99</h4>
                                 <div className='btn-div'>
                                     <button className="sliderButton">Shop Now</button>
                                 </div>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/HomePage/Home/Home";
 import About from "./pages/About/About";
 import Purchase from "./pages/Purchase/Purchase";
@@ -22,7 +23,6 @@ import AddBlog from "./pages/Dashboard/AddBlog/AddBlog";
 import AdminRoute from "./pages/LoginPage/AdminRoute/AdminRoute";
 import PrivateRoute from "./pages/LoginPage/PrivateRoute/PrivateRoute";
 import Navigation from "./pages/Shared/Navigation/Navigation";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

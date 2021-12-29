@@ -1,6 +1,7 @@
 .review-image{
     width: 150px;
     height: 150px;
+    overflow: hidden;
     margin: 0 auto;
 }
 .review-image img{

@@ -1,6 +1,7 @@
 import initializeAuthentication from "../pages/LoginPage/firebase/firebase.init";
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, sendPasswordResetEmail } from "firebase/auth";
 import { useEffect, useState } from "react";
+import swal from "sweetalert";
 
 initializeAuthentication()
 //auth provider
@@ -32,6 +33,7 @@ const useFirebase = () => {
                     .catch((error) => {
                     });
                 navigate('/');
+                swal("Good job!", "You successfully Registered!", "success");
             })
             .catch((error) => {
                 setError(error.message)
@@ -46,6 +48,7 @@ const useFirebase = () => {
         setLoading(true);
         signInWithPopup(auth, googleProvider)
             .then(result => {
+                swal("Good job!", "You successfully Login!", "success");
                 const user = result.user;
                 saveUser(user.email, user.name, 'PUT')
                 const destination = location?.state?.from || '/';
@@ -61,6 +64,7 @@ const useFirebase = () => {
     const signInWithEmailPassword = (email, password, location, navigate) => {
         signInWithEmailAndPassword(auth, email, password)
             .then(result => {
+                swal("Good job!", "You successfully Login!", "success");
                 setUser(result.user);
                 const destination = location?.state?.from || '/';
                 navigate(destination);

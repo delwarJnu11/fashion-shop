@@ -97,7 +97,7 @@ const Purchase = () => {
                                     <input required placeholder="Phone" className="w-100 form-control mb-3 input-field" {...register("phone", { required: true })} />
                                 </Col>
                             </Row>
-                            <Button className="bannerButton purchase-btn" type="submit">
+                            <Button className="purchase-btn" type="submit">
                                 Place Order
                             </Button>
                         </form>

@@ -29,6 +29,11 @@
 }
 .purchase-btn{
     background-color: dimgray;
+    padding: 10px 40px;
+    border: 1px solid white;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 5px;
 }
 .purchase-btn:hover{
     background-color: rgb(68, 67, 67);

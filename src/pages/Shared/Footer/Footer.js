@@ -61,7 +61,7 @@ const Footer = () => {
                         <h4 className='footer-title mb-3'>NEWSLETTER</h4>
                         <p className='text'>Get all the latest information on Events,
                             Sales and Offers. Sign up for newsletter today.</p>
-                        <input type="text" name="email" id="email" />
+                        <input type="text" name="email" id="footer-email" />
                         <button className='newsletter-button'>SUBSCRIBE</button>
                     </Col>
                 </Row>

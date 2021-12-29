@@ -13,12 +13,13 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, []);
-    console.log(reviews)
+
     return (
-        <Container className="my-5">
+        < Container className="my-5" >
             <h3 className="text-center">What Our Customer Say</h3>
             <p className="text-center">Your Satisfaction is our goal.</p>
-            <Row xs={1} md={3} className="g-4 mt-4">
+
+            <Row xs={1} sm={1} md={3} className='g-4 mt-3'>
                 {
                     reviews.map(review => <Col key={review._id}>
                         <div className="text-center p-3 border h-100">

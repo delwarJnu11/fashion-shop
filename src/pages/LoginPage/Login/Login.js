@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Col, Container, Form, FormControl, InputGroup, Row } from 'react-bootstrap';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Button, Col, Container, Form, FormControl, InputGroup, Row } from 'react-bootstrap';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import './Login.css';
 import useAuth from '../../../hooks/useAuth';
-import Navigation from '../../Shared/Navigation/Navigation';
+import './Login.css';
+import Footer from '../../Shared/Footer/Footer';
 
 const Login = () => {
     const [loginData, setLoginData] = useState();
@@ -33,7 +33,6 @@ const Login = () => {
     }
     return (
         <>
-            <Navigation></Navigation>
             <Container className="my-5">
                 <Row className="d-flex align-items-center">
                     <Col sm={12} md={5}>
@@ -109,6 +108,7 @@ const Login = () => {
                     </Col>
                 </Row>
             </Container>
+            <Footer></Footer>
         </>
     );
 };

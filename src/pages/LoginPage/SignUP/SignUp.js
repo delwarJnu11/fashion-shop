@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../../hooks/useAuth';
+import Footer from '../../Shared/Footer/Footer';
 
 const SignUp = () => {
     const [registerData, setRegisterData] = useState();
@@ -29,7 +30,7 @@ const SignUp = () => {
         createNewUser(registerData.name, registerData.email, registerData.password, navigate);
     };
     return (
-        <div>
+        <>
             <Container className="my-5">
                 <Row className="d-flex align-items-center">
                     <Col sm={12} md={5}>
@@ -125,7 +126,8 @@ const SignUp = () => {
                     </Col>
                 </Row>
             </Container>
-        </div>
+            <Footer></Footer>
+        </>
     );
 };
 

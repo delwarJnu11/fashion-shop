@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import swal from 'sweetalert';
-import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import InnerImageZoom from 'react-inner-image-zoom';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as emptyStart } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Rating from 'react-rating';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
+import Footer from '../Shared/Footer/Footer';
 import './Purchase.css';
 
 const Purchase = () => {
@@ -104,6 +105,7 @@ const Purchase = () => {
                 </Row>
 
             </Container>
+            <Footer></Footer>
         </>
     );
 };

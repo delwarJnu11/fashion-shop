@@ -28,13 +28,19 @@ const Reviews = () => {
     return (
         <div className='testimonial-bg'>
             < Container>
-                <h3 className="text-center text-white pt-5">What Our Customer Say</h3>
-                <p className="text-center text-white">Your Satisfaction is our goal.</p>
+                <h3 className="text-center text-white pt-5" data-aos="fade-left"
+                    data-aos-easing="linear"
+                    data-aos-duration="1000">What Our Customer Say</h3>
+                <p className="text-center text-white" data-aos="fade-right"
+                    data-aos-easing="linear"
+                    data-aos-duration="1000">Your Satisfaction is our goal.</p>
                 <Row>
                     <Slider {...settings}>
                         {
                             reviews.map(review => <Col sm={12} md={4} key={review._id}>
-                                <div className="text-center m-1 p-3">
+                                <div className="text-center m-1 p-3" data-aos="fade-left"
+                                    data-aos-easing="linear"
+                                    data-aos-duration="1000">
                                     <div className="review-image">
                                         <img src={`data:image/png;base64,${review.image}`} className='img-fluid' alt="" />
                                     </div>

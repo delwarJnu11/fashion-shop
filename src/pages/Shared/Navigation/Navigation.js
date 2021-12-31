@@ -6,7 +6,6 @@ import './Navigation.css';
 
 const Navigation = () => {
     const { user, logOut } = useAuth();
-    console.log(user)
     return (
         <div>
             <Navbar bg="light" expand="lg">

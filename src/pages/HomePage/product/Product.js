@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
     return (
-        <Col sm={12} md={3} lg={3}>
-            <div className="product-wrapper">
+        <Col>
+            <div className="product-wrapper" data-aos="zoom-in"
+                data-aos-easing="linear"
+                data-aos-duration="1000">
                 <div product-detail>
                     <div className="product-image">
                         <img src={product.image} className='img-fluid' alt="" />

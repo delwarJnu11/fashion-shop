@@ -3,14 +3,18 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight, faEnvelope, faMapMarkedAlt, faPhoneAlt, } from '@fortawesome/free-solid-svg-icons';
 import { FaFacebookSquare, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import ScrollToTop from "react-scroll-to-top";
 import './Footer.css';
 
 const Footer = () => {
     return (
         <div className='footer-bg'>
+            <ScrollToTop smooth color="orange" top="200" />
             <Container>
                 <Row>
-                    <Col sm={12} md={3}>
+                    <Col sm={12} md={3} data-aos="fade-right"
+                        data-aos-easing="linear"
+                        data-aos-duration="1000">
                         <h4 className='footer-title'>CONTACT INFO</h4>
                         <div className='d-flex align-items-center mt-3'>
                             <FontAwesomeIcon className='icon' icon={faMapMarkedAlt} />
@@ -37,7 +41,9 @@ const Footer = () => {
                             </div>
                         </div>
                     </Col>
-                    <Col sm={12} md={3}>
+                    <Col sm={12} md={3} data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="1000">
                         <h4 className='footer-title mb-3'>ACCOUNT</h4>
                         <p className='footer-list'><FontAwesomeIcon className='caret-icon' icon={faCaretRight} /> About Us</p>
                         <p className='footer-list'><FontAwesomeIcon className='caret-icon' icon={faCaretRight} /> Contact us</p>
@@ -47,7 +53,9 @@ const Footer = () => {
                         <p className='footer-list'><FontAwesomeIcon className='caret-icon' icon={faCaretRight} /> Terms & Conditions</p>
                         <p className='footer-list'><FontAwesomeIcon className='caret-icon' icon={faCaretRight} /> Priacy & Policy</p>
                     </Col>
-                    <Col sm={12} md={3}>
+                    <Col sm={12} md={3} data-aos="fade-up"
+                        data-aos-easing="linear"
+                        data-aos-duration="1000">
                         <h4 className='footer-title mb-3'>CATEGORY</h4>
                         <p className='footer-list'><FontAwesomeIcon className='caret-icon' icon={faCaretRight} /> Accessories</p>
                         <p className='footer-list'><FontAwesomeIcon className='caret-icon' icon={faCaretRight} /> Caps</p>
@@ -57,7 +65,9 @@ const Footer = () => {
                         <p className='footer-list'><FontAwesomeIcon className='caret-icon' icon={faCaretRight} /> Electronics</p>
                         <p className='footer-list'><FontAwesomeIcon className='caret-icon' icon={faCaretRight} /> Shoes</p>
                     </Col>
-                    <Col sm={12} md={3}>
+                    <Col sm={12} md={3} data-aos="fade-right"
+                        data-aos-easing="linear"
+                        data-aos-duration="1000">
                         <h4 className='footer-title mb-3'>NEWSLETTER</h4>
                         <p className='text'>Get all the latest information on Events,
                             Sales and Offers. Sign up for newsletter today.</p>

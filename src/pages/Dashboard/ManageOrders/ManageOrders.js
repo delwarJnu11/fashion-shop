@@ -1,8 +1,9 @@
 import { faCheck, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Row, Spinner, Table } from 'react-bootstrap';
+import { Button, Col, Container, Row, Table } from 'react-bootstrap';
 import swal from 'sweetalert';
+import FadeLoader from "react-spinners/FadeLoader";
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
@@ -112,7 +113,7 @@ const ManageOrders = () => {
                         </Col>
                     </Row>
                 </> : <div className="text-center">
-                    <Spinner animation='border' variant='warning'></Spinner>
+                    <FadeLoader size={150} color={"#b57600"} speedMultiplier={2.5} />
                 </div>
             }
         </Container>

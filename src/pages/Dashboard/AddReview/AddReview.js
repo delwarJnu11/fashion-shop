@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row, InputGroup, FormControl } from 'react-bootstrap';
 import swal from 'sweetalert';
+import useAuth from '../../../hooks/useAuth';
 
 const AddReview = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [rating, setRating] = useState('');
     const [image, setImage] = useState(null);
+
+    const { user } = useAuth();
 
     // Handle form submit
     const handleReviewSubmit = e => {
@@ -53,6 +56,7 @@ const AddReview = () => {
                                         type="text"
                                         id="name"
                                         name="name"
+                                        value={user.displayName}
                                         autoComplete="current-name"
                                         placeholder="Enter Your Name"
                                         required

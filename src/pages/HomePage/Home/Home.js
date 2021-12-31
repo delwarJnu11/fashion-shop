@@ -6,7 +6,7 @@ import Reviews from '../Reviews/Reviews';
 import Blogs from '../Blogs/Blogs';
 import Footer from '../../Shared/Footer/Footer';
 import useProducts from '../../../hooks/useProducts';
-import { Spinner } from 'react-bootstrap';
+import FadeLoader from "react-spinners/FadeLoader";
 
 const Home = () => {
     const { products } = useProducts();
@@ -21,7 +21,7 @@ const Home = () => {
                     <Blogs></Blogs>
                     <Footer></Footer>
                 </> : <div className='text-center'>
-                    <Spinner animation='border' variant='warning'></Spinner>
+                    <FadeLoader size={150} color={"#b57600"} speedMultiplier={1.5} />
                 </div>
             }
 

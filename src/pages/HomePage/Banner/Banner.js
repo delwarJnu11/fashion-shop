@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Banner.css';
 
 const Banner = () => {
@@ -19,7 +20,9 @@ const Banner = () => {
                                 </h2>
                                 <h4 className='banner-subtitle'>STARING AT $ 99.99</h4>
                                 <div className='btn-div'>
-                                    <button className="sliderButton">Shop Now</button>
+                                    <Link to="/shop">
+                                        <button className="sliderButton">Shop Now</button>
+                                    </Link>
                                 </div>
                             </Col>
                         </Row>
@@ -36,7 +39,9 @@ const Banner = () => {
                                 </h2>
                                 <h4 className='banner-subtitle'>STARING AT $ 79.99</h4>
                                 <div className='btn-div'>
-                                    <button className="sliderButton">Shop Now</button>
+                                    <Link to="/shop">
+                                        <button className="sliderButton">Shop Now</button>
+                                    </Link>
                                 </div>
                             </Col>
                             <Col md={6}>

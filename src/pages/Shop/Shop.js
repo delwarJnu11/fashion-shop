@@ -1,8 +1,9 @@
 import React from 'react';
-import { Container, Row, Spinner } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import useProducts from '../../hooks/useProducts';
 import Product from '../HomePage/product/Product';
 import Footer from '../Shared/Footer/Footer';
+import FadeLoader from "react-spinners/FadeLoader";
 
 const Shop = () => {
     const { products } = useProducts();
@@ -21,7 +22,7 @@ const Shop = () => {
                     </Container>
                     <Footer></Footer>
                 </> : <div className='text-center'>
-                    <Spinner animation='border' variant='warning'></Spinner>
+                    <FadeLoader size={150} color={"#b57600"} speedMultiplier={2.5} />
                 </div>
             }
         </>

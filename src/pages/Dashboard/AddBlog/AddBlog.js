@@ -28,6 +28,7 @@ const AddBlog = () => {
             .then(res => res.json())
             .then(result => {
                 swal("Good job!", "Your product added successfully done!", "success");
+                setTitle('')
             })
     }
 
@@ -37,7 +38,7 @@ const AddBlog = () => {
             <Row>
                 <Col md={3}></Col>
                 <Col md={6}>
-                    <h1 className="dashboard-title">Add A Product</h1>
+                    <h1 className="dashboard-title">Add A Blog</h1>
                     <Form onSubmit={handleProductSubmit}>
                         <Row>
                             <Col className="text-start">
@@ -52,6 +53,7 @@ const AddBlog = () => {
                                         name="title"
                                         autoComplete="current-title"
                                         placeholder="Enter Blog Title"
+                                        defaultvalue={title}
                                         required
                                     />
                                 </InputGroup>

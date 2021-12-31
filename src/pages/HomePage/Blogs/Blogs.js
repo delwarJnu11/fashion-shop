@@ -26,7 +26,7 @@ const Blogs = () => {
                             <div className='p-2'>
                                 <p className="text-muted fw-bold">Author- {blog.author}</p>
                                 <h4 style={{ fontFamily: "Roboto", fontSize: "1.3em" }}>{blog.title}</h4>
-                                <p className='review-text'>{blog.description} <Link to="">read more</Link></p>
+                                <p className='review-text text-dark'>{blog.description} <Link to="">read more</Link></p>
 
                             </div>
                         </Col>)

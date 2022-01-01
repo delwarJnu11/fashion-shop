@@ -14,7 +14,7 @@ const Shop = () => {
                     <Container className='my-5'>
                         <h3 className='text-center'>Our Latest PRODUCTS</h3>
                         <p className='text-center mb-4'>Amazing products added recently in our catalog</p>
-                        <Row>
+                        <Row xs={1} md={4} className='g-4 mt-2'>
                             {
                                 products.map(product => <Product product={product} key={product._id}></Product>)
                             }

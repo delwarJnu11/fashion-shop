@@ -1,65 +1,64 @@
-import React, { useEffect, useState } from 'react';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Col, Container, Row, Table } from 'react-bootstrap';
-import swal from 'sweetalert';
-import useAuth from '../../../hooks/useAuth';
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import FadeLoader from "react-spinners/FadeLoader";
-
+import swal from "sweetalert";
+import useAuth from "../../../hooks/useAuth";
 
 const MyOders = () => {
     const [orders, setOrders] = useState([]);
     const { user } = useAuth();
     useEffect(() => {
-        fetch('https://enigmatic-gorge-89531.herokuapp.com/orders')
-            .then(res => res.json())
-            .then(data => {
-
-                const filterByUser = data.filter(order => order.email === user.email);
-                setOrders(filterByUser)
+        fetch("https://fashion-shop-server.vercel.app/orders")
+            .then((res) => res.json())
+            .then((data) => {
+                const filterByUser = data.filter(
+                    (order) => order.email === user.email
+                );
+                setOrders(filterByUser);
             });
     }, [orders, user.email]);
 
     //handle delete product
-    const handleDelete = id => {
+    const handleDelete = (id) => {
         swal({
             title: "Are you sure?",
             text: "You want to Delete this Product!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal("Poof! Your product has been deleted!", {
-                        icon: "success",
+        }).then((willDelete) => {
+            if (willDelete) {
+                swal("Poof! Your product has been deleted!", {
+                    icon: "success",
+                });
+                fetch(`https://fashion-shop-server.vercel.app/orders/${id}`, {
+                    method: "DELETE",
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.deletedCount > 0) {
+                            const remainingOrders = orders.filter(
+                                (order) => order._id !== id
+                            );
+                            setOrders(remainingOrders);
+                        }
                     });
-                    fetch(`https://enigmatic-gorge-89531.herokuapp.com/orders/${id}`, {
-                        method: "DELETE"
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.deletedCount > 0) {
-
-                                const remainingOrders = orders.filter(order => order._id !== id)
-                                setOrders(remainingOrders);
-                            }
-                        })
-                } else {
-                    swal("Your Product is safe!");
-                }
-            });
-
-    }
+            } else {
+                swal("Your Product is safe!");
+            }
+        });
+    };
 
     return (
         <Container>
-            {
-                orders.length > 0 ? <Row>
+            {orders.length > 0 ? (
+                <Row>
                     <Col xs={12} sm={12} md={12}>
                         <Table striped bordered hover responsive="sm">
                             <thead>
-                                <tr className='text-center'>
+                                <tr className="text-center">
                                     <th>Product Name</th>
                                     <th>Customer Name</th>
                                     <th>Customer Phone</th>
@@ -69,28 +68,41 @@ const MyOders = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
-                                    orders.map(order => <tr className='text-center' key={order._id}>
+                                {orders.map((order) => (
+                                    <tr className="text-center" key={order._id}>
                                         <td>{order.product.name}</td>
                                         <td>{order.name}</td>
                                         <td>{order.phone}</td>
                                         <td>${order.product.price}</td>
                                         <td>{order.status}</td>
                                         <td>
-                                            <Button title="Delete" variant="danger" onClick={() => handleDelete(order._id)}>
-                                                <FontAwesomeIcon icon={faTrashAlt} />
+                                            <Button
+                                                title="Delete"
+                                                variant="danger"
+                                                onClick={() =>
+                                                    handleDelete(order._id)
+                                                }
+                                            >
+                                                <FontAwesomeIcon
+                                                    icon={faTrashAlt}
+                                                />
                                             </Button>
                                         </td>
                                     </tr>
-                                    )
-                                }
+                                ))}
                             </tbody>
                         </Table>
                     </Col>
-                </Row> : <div className="text-center">
-                    <FadeLoader size={150} color={"#b57600"} speedMultiplier={1.5} />
+                </Row>
+            ) : (
+                <div className="text-center">
+                    <FadeLoader
+                        size={150}
+                        color={"#b57600"}
+                        speedMultiplier={1.5}
+                    />
                 </div>
-            }
+            )}
         </Container>
     );
 };

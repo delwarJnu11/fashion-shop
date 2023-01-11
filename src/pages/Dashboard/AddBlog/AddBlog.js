@@ -1,37 +1,47 @@
-import React, { useState } from 'react';
-import { Button, Col, Container, Form, Row, InputGroup, FormControl } from 'react-bootstrap';
-import swal from 'sweetalert';
+import React, { useState } from "react";
+import {
+    Button,
+    Col,
+    Container,
+    Form,
+    FormControl,
+    InputGroup,
+    Row,
+} from "react-bootstrap";
+import swal from "sweetalert";
 
 const AddBlog = () => {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [author, setAuthor] = useState('');
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [author, setAuthor] = useState("");
     const [image, setImage] = useState(null);
 
     // Handle form submit
-    const handleProductSubmit = e => {
+    const handleProductSubmit = (e) => {
         e.preventDefault();
         if (!image) {
             return;
         }
         const formData = new FormData();
-        formData.append('title', title);
-        formData.append('description', description);
-        formData.append('author', author);
-        formData.append('image', image);
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("author", author);
+        formData.append("image", image);
 
-
-        fetch('https://enigmatic-gorge-89531.herokuapp.com/blogs', {
+        fetch("https://fashion-shop-server.vercel.app/blogs", {
             method: "POST",
-            body: formData
+            body: formData,
         })
-            .then(res => res.json())
-            .then(result => {
-                swal("Good job!", "Your product added successfully done!", "success");
-                setTitle('')
-            })
-    }
-
+            .then((res) => res.json())
+            .then((result) => {
+                swal(
+                    "Good job!",
+                    "Your product added successfully done!",
+                    "success"
+                );
+                setTitle("");
+            });
+    };
 
     return (
         <Container className="my-5">
@@ -47,7 +57,7 @@ const AddBlog = () => {
                                 </Form.Label>
                                 <InputGroup className="w-100 mb-3">
                                     <FormControl
-                                        onBlur={e => setTitle(e.target.value)}
+                                        onBlur={(e) => setTitle(e.target.value)}
                                         type="text"
                                         id="title"
                                         name="title"
@@ -61,12 +71,17 @@ const AddBlog = () => {
                         </Row>
                         <Row>
                             <Col className="text-start">
-                                <Form.Label htmlFor="description" visuallyHidden>
+                                <Form.Label
+                                    htmlFor="description"
+                                    visuallyHidden
+                                >
                                     Blog Description
                                 </Form.Label>
                                 <InputGroup className="w-100 mb-3">
                                     <FormControl
-                                        onBlur={e => setDescription(e.target.value)}
+                                        onBlur={(e) =>
+                                            setDescription(e.target.value)
+                                        }
                                         type="text"
                                         id="description"
                                         name="description"
@@ -84,7 +99,9 @@ const AddBlog = () => {
                                 </Form.Label>
                                 <InputGroup className="mb-2 w-100">
                                     <FormControl
-                                        onBlur={e => setAuthor(e.target.value)}
+                                        onBlur={(e) =>
+                                            setAuthor(e.target.value)
+                                        }
                                         name="author"
                                         type="text"
                                         autoComplete="current-author"
@@ -102,11 +119,13 @@ const AddBlog = () => {
                                 </Form.Label>
                                 <InputGroup className="mb-2 w-100">
                                     <FormControl
-                                        onBlur={e => setImage(e.target.files[0])}
+                                        onBlur={(e) =>
+                                            setImage(e.target.files[0])
+                                        }
                                         name="image"
                                         type="file"
                                         id="image"
-                                        accept='image/*'
+                                        accept="image/*"
                                         required
                                     />
                                 </InputGroup>
@@ -114,7 +133,10 @@ const AddBlog = () => {
                         </Row>
 
                         <div className="d-flex justify-content-between">
-                            <Button type="submit" className="mt-3 w-50 login-button">
+                            <Button
+                                type="submit"
+                                className="mt-3 w-50 login-button"
+                            >
                                 Add Blog
                             </Button>
                         </div>
@@ -123,7 +145,6 @@ const AddBlog = () => {
                 <Col md={3}></Col>
             </Row>
         </Container>
-
     );
 };
 

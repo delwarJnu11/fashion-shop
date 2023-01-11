@@ -1,15 +1,25 @@
-import initializeAuthentication from "../pages/LoginPage/firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, sendPasswordResetEmail } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    getAuth,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signOut,
+    updateProfile,
+} from "firebase/auth";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
+import initializeAuthentication from "../pages/LoginPage/firebase/firebase.init";
 
-initializeAuthentication()
+initializeAuthentication();
 //auth provider
 const googleProvider = new GoogleAuthProvider();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
     const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
@@ -19,122 +29,126 @@ const useFirebase = () => {
         setLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                setError('');
+                setError("");
                 const newUser = { email, displayName: name };
                 setUser(newUser);
                 // save user to the database
-                saveUser(email, name, 'POST');
-                // update name 
+                saveUser(email, name, "POST");
+                // update name
                 updateProfile(auth.currentUser, {
                     displayName: name,
                 })
-                    .then(() => {
-                    })
-                    .catch((error) => {
-                    });
-                navigate('/');
+                    .then(() => {})
+                    .catch((error) => {});
+                navigate("/");
                 swal("Good job!", "You successfully Registered!", "success");
             })
             .catch((error) => {
-                setError(error.message)
+                setError(error.message);
             })
             .finally(() => {
                 setLoading(false);
             });
-    }
+    };
 
     //Google SIgn In
     const signInWithGoogle = (location, navigate) => {
         setLoading(true);
         signInWithPopup(auth, googleProvider)
-            .then(result => {
+            .then((result) => {
                 swal("Good job!", "You successfully Login!", "success");
                 const user = result.user;
-                saveUser(user.email, user.name, 'PUT')
-                const destination = location?.state?.from || '/';
-                navigate(destination);
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-            .finally(() => setLoading(false));
-    }
-
-    //Sign In With Email & Password
-    const signInWithEmailPassword = (email, password, location, navigate) => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                swal("Good job!", "You successfully Login!", "success");
-                setUser(result.user);
-                const destination = location?.state?.from || '/';
+                saveUser(user.email, user.name, "PUT");
+                const destination = location?.state?.from || "/";
                 navigate(destination);
             })
             .catch((error) => {
                 setError(error.message);
             })
             .finally(() => setLoading(false));
-    }
+    };
+
+    //Sign In With Email & Password
+    const signInWithEmailPassword = (email, password, location, navigate) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((result) => {
+                swal("Good job!", "You successfully Login!", "success");
+                setUser(result.user);
+                const destination = location?.state?.from || "/";
+                navigate(destination);
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => setLoading(false));
+    };
 
     //PassWord Reset
     const resetPassword = (email) => {
         sendPasswordResetEmail(auth, email)
             .then(() => {
-                alert('Password Reset Email Sent To Your Mail')
+                alert("Password Reset Email Sent To Your Mail");
             })
             .catch((error) => {
-                setError(error.message)
+                setError(error.message);
             });
-    }
+    };
 
     //logOut
     const logOut = () => {
         setLoading(true);
-        signOut(auth).then(() => {
-
-        })
+        signOut(auth)
+            .then(() => {})
             .catch((error) => {
-                setError(error.message)
+                setError(error.message);
             })
             .finally(() => {
                 setLoading(false);
             });
-    }
+    };
 
     //save user
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('https://enigmatic-gorge-89531.herokuapp.com/users', {
+        fetch("https://fashion-shop-server.vercel.app/users", {
             method: method,
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
-            body: JSON.stringify(user)
-        })
-
-    }
+            body: JSON.stringify(user),
+        });
+    };
 
     //Set Admin
     useEffect(() => {
-        fetch(`https://enigmatic-gorge-89531.herokuapp.com/users/${user.email}`)
-            .then(res => res.json())
-            .then(data => setAdmin(data.admin))
-    }, [user.email])
+        fetch(`https://fashion-shop-server.vercel.app/users/${user.email}`)
+            .then((res) => res.json())
+            .then((data) => setAdmin(data.admin));
+    }, [user.email]);
 
-    // observe user 
+    // observe user
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-            }
-            else {
-                setUser({})
+            } else {
+                setUser({});
             }
             setLoading(false);
         });
         return unsubscribed;
     }, [auth]);
 
-    return { user, loading, error, admin, signInWithGoogle, signInWithEmailPassword, createNewUser, resetPassword, logOut }
-
-}
+    return {
+        user,
+        loading,
+        error,
+        admin,
+        signInWithGoogle,
+        signInWithEmailPassword,
+        createNewUser,
+        resetPassword,
+        logOut,
+    };
+};
 export default useFirebase;

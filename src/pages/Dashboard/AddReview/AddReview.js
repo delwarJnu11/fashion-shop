@@ -1,42 +1,53 @@
-import React, { useState } from 'react';
-import { Button, Col, Container, Form, Row, InputGroup, FormControl } from 'react-bootstrap';
-import swal from 'sweetalert';
-import useAuth from '../../../hooks/useAuth';
+import React, { useState } from "react";
+import {
+    Button,
+    Col,
+    Container,
+    Form,
+    FormControl,
+    InputGroup,
+    Row,
+} from "react-bootstrap";
+import swal from "sweetalert";
+import useAuth from "../../../hooks/useAuth";
 
 const AddReview = () => {
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [rating, setRating] = useState('');
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [rating, setRating] = useState("");
     const [image, setImage] = useState(null);
 
     const { user } = useAuth();
 
     // Handle form submit
-    const handleReviewSubmit = e => {
+    const handleReviewSubmit = (e) => {
         e.preventDefault();
         if (!image) {
             return;
         }
         const formData = new FormData();
-        formData.append('name', name);
-        formData.append('description', description);
-        formData.append('rating', rating);
-        formData.append('image', image);
+        formData.append("name", name);
+        formData.append("description", description);
+        formData.append("rating", rating);
+        formData.append("image", image);
 
         if (rating <= 5 && rating >= 0) {
-            fetch('https://enigmatic-gorge-89531.herokuapp.com/reviews', {
+            fetch("https://fashion-shop-server.vercel.app/reviews", {
                 method: "POST",
-                body: formData
+                body: formData,
             })
-                .then(res => res.json())
-                .then(result => {
-                    swal("Good job!", "Your Review added successfully done!", "success");
-                })
+                .then((res) => res.json())
+                .then((result) => {
+                    swal(
+                        "Good job!",
+                        "Your Review added successfully done!",
+                        "success"
+                    );
+                });
         } else {
             swal("Opps!", "Your Put Invalid Ratings!", "warning");
         }
-    }
-
+    };
 
     return (
         <Container className="my-5">
@@ -52,7 +63,7 @@ const AddReview = () => {
                                 </Form.Label>
                                 <InputGroup className="w-100 mb-3">
                                     <FormControl
-                                        onBlur={e => setName(e.target.value)}
+                                        onBlur={(e) => setName(e.target.value)}
                                         type="text"
                                         id="name"
                                         name="name"
@@ -66,12 +77,17 @@ const AddReview = () => {
                         </Row>
                         <Row>
                             <Col className="text-start">
-                                <Form.Label htmlFor="description" visuallyHidden>
+                                <Form.Label
+                                    htmlFor="description"
+                                    visuallyHidden
+                                >
                                     Review Description
                                 </Form.Label>
                                 <InputGroup className="w-100 mb-3">
                                     <FormControl
-                                        onBlur={e => setDescription(e.target.value)}
+                                        onBlur={(e) =>
+                                            setDescription(e.target.value)
+                                        }
                                         type="text"
                                         id="description"
                                         name="description"
@@ -89,7 +105,9 @@ const AddReview = () => {
                                 </Form.Label>
                                 <InputGroup className="mb-2 w-100">
                                     <FormControl
-                                        onBlur={e => setRating(e.target.value)}
+                                        onBlur={(e) =>
+                                            setRating(e.target.value)
+                                        }
                                         name="rating"
                                         type="text"
                                         autoComplete="current-rating"
@@ -107,18 +125,23 @@ const AddReview = () => {
                                 </Form.Label>
                                 <InputGroup className="mb-2 w-100">
                                     <FormControl
-                                        onBlur={e => setImage(e.target.files[0])}
+                                        onBlur={(e) =>
+                                            setImage(e.target.files[0])
+                                        }
                                         name="image"
                                         type="file"
                                         id="image"
-                                        accept='image/*'
+                                        accept="image/*"
                                         required
                                     />
                                 </InputGroup>
                             </Col>
                         </Row>
                         <div className="d-flex justify-content-between">
-                            <Button type="submit" className="mt-3 w-50 login-button">
+                            <Button
+                                type="submit"
+                                className="mt-3 w-50 login-button"
+                            >
                                 Add Review
                             </Button>
                         </div>
@@ -127,7 +150,6 @@ const AddReview = () => {
                 <Col md={3}></Col>
             </Row>
         </Container>
-
     );
 };
 

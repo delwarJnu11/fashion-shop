@@ -1,58 +1,56 @@
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Button, Col, Container, Row, Table } from 'react-bootstrap';
-import swal from 'sweetalert';
-import useProducts from '../../../hooks/useProducts';
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import FadeLoader from "react-spinners/FadeLoader";
+import swal from "sweetalert";
+import useProducts from "../../../hooks/useProducts";
 
 const ManageProducts = () => {
     const { products, setProducts } = useProducts();
 
     //handle delete product
-    const handleDelete = id => {
+    const handleDelete = (id) => {
         swal({
             title: "Are you sure?",
             text: "You want to Delete this Product!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal("Poof! Your product has been deleted!", {
-                        icon: "success",
+        }).then((willDelete) => {
+            if (willDelete) {
+                swal("Poof! Your product has been deleted!", {
+                    icon: "success",
+                });
+                fetch(`https://fashion-shop-server.vercel.app/products/${id}`, {
+                    method: "DELETE",
+                    "content-type": "application/json",
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.deletedCount > 0) {
+                            const remainingProducts = products.filter(
+                                (product) => product._id !== id
+                            );
+                            setProducts(remainingProducts);
+                        }
                     });
-                    fetch(`https://enigmatic-gorge-89531.herokuapp.com/products/${id}`, {
-                        method: "DELETE",
-                        'content-type': "application/json",
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.deletedCount > 0) {
-
-                                const remainingProducts = products.filter(product => product._id !== id)
-                                setProducts(remainingProducts);
-                            }
-                        })
-                } else {
-                    swal("Your Product file is safe!");
-                }
-            });
-
-    }
-
-
+            } else {
+                swal("Your Product file is safe!");
+            }
+        });
+    };
 
     return (
         <Container>
-            {
-
-                products.length > 0 ? <>
-                    <h1 className="dashboard-title text-center">Total Products {products.length}</h1>
+            {products.length > 0 ? (
+                <>
+                    <h1 className="dashboard-title text-center">
+                        Total Products {products.length}
+                    </h1>
                     <Row>
                         <Col xs={12} sm={12} md={12}>
-                            <div style={{ overflow: 'scroll' }}>
+                            <div style={{ overflow: "scroll" }}>
                                 <Table striped bordered hover responsive="sm">
                                     <thead>
                                         <tr>
@@ -64,29 +62,52 @@ const ManageProducts = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {
-                                            products.map(product => <tr key={product._id}>
-                                                <td> <img width="50px" height="50px" src={product.image} alt="" /> </td>
+                                        {products.map((product) => (
+                                            <tr key={product._id}>
+                                                <td>
+                                                    {" "}
+                                                    <img
+                                                        width="50px"
+                                                        height="50px"
+                                                        src={product.image}
+                                                        alt=""
+                                                    />{" "}
+                                                </td>
                                                 <td>{product._id}</td>
                                                 <td>{product?.name}</td>
                                                 <td>${product?.price}</td>
                                                 <td>
-                                                    <Button title="Delete" variant="danger" onClick={() => handleDelete(product._id)}>
-                                                        <FontAwesomeIcon icon={faTrashAlt} />
+                                                    <Button
+                                                        title="Delete"
+                                                        variant="danger"
+                                                        onClick={() =>
+                                                            handleDelete(
+                                                                product._id
+                                                            )
+                                                        }
+                                                    >
+                                                        <FontAwesomeIcon
+                                                            icon={faTrashAlt}
+                                                        />
                                                     </Button>
                                                 </td>
-
-                                            </tr>)
-                                        }
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </Table>
                             </div>
                         </Col>
                     </Row>
-                </> : <div className="text-center">
-                    <FadeLoader size={150} color={"#b57600"} speedMultiplier={2.5} />
+                </>
+            ) : (
+                <div className="text-center">
+                    <FadeLoader
+                        size={150}
+                        color={"#b57600"}
+                        speedMultiplier={2.5}
+                    />
                 </div>
-            }
+            )}
         </Container>
     );
 };

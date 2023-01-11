@@ -1,33 +1,37 @@
-import React, { useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import swal from 'sweetalert';
+import React, { useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import swal from "sweetalert";
 
 const MakeAdmin = () => {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState("");
     //get Input value
-    const handleOnBlur = e => {
+    const handleOnBlur = (e) => {
         const value = e.target.value;
         setEmail(value);
-    }
+    };
     //handle admin submit
-    const handleAdminSubmit = e => {
+    const handleAdminSubmit = (e) => {
         const user = { email };
-        fetch('https://enigmatic-gorge-89531.herokuapp.com/users/admin', {
-            method: 'PUT',
+        fetch("https://fashion-shop-server.vercel.app/users/admin", {
+            method: "PUT",
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json",
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(user),
         })
-            .then(res => res.json())
-            .then(data => {
+            .then((res) => res.json())
+            .then((data) => {
                 if (data.modifiedCount) {
-                    swal("Good job!", "Admin Made Successfully Done!", "success");
+                    swal(
+                        "Good job!",
+                        "Admin Made Successfully Done!",
+                        "success"
+                    );
                 }
-            })
+            });
 
-        e.preventDefault()
-    }
+        e.preventDefault();
+    };
     return (
         <Container>
             <Row>
@@ -44,7 +48,7 @@ const MakeAdmin = () => {
                                 />
                             </Col>
                         </Row>
-                        <Button className='login-button' type="submit">
+                        <Button className="login-button" type="submit">
                             Make an Admin
                         </Button>
                     </form>
